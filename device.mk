@@ -183,3 +183,7 @@ PRODUCT_SOONG_NAMESPACES += \
 # VNDK
 PRODUCT_PACKAGES += \
     ld.config.vndk_lite.txt
+
+# Copy any Permissions files, overriding anything if needed
+$(foreach f,$(wildcard $(LOCAL_PATH)/permissions/*.xml),\
+    $(eval PRODUCT_COPY_FILES += $(f):$(TARGET_COPY_OUT_SYSTEM)/etc/permissions/$(notdir $f)))
