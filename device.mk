@@ -22,6 +22,16 @@ $(call inherit-product, $(SRC_TARGET_DIR)/product/product_launched_with_p.mk)
 $(call inherit-product-if-exists, vendor/lineage/config/common_full_tablet_wifionly.mk)
 $(call inherit-product-if-exists, vendor/bliss/config/common_full_tablet_wifionly.mk)
 
+# Inherit vendor/gms if available
+ifeq ($(WITH_GMS_MINIMAL),true)
+$(call inherit-product-if-exists, vendor/gms/config.mk)
+endif
+
+# Inherit vendor/foss if available
+ifeq ($(USE_FOSS_APPS),true)
+$(call inherit-product-if-exists, vendor/foss/foss.mk)
+endif
+
 # Use packages.mk for added packages
 $(call inherit-product, $(LOCAL_PATH)/packages.mk)
 
