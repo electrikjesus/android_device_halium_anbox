@@ -22,6 +22,9 @@ $(call inherit-product, $(SRC_TARGET_DIR)/product/product_launched_with_p.mk)
 $(call inherit-product-if-exists, vendor/lineage/config/common_full_tablet_wifionly.mk)
 $(call inherit-product-if-exists, vendor/bliss/config/common_full_tablet_wifionly.mk)
 
+# Use packages.mk for added packages
+$(call inherit-product, $(LOCAL_PATH)/packages.mk)
+
 # Audio HAL
 PRODUCT_PACKAGES += \
     android.hardware.audio@2.0-service \
